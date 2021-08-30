@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import PageWrapper from "./components/PageWrapper";
+import Header from "./components/header";
+import Filter from "./components/Filter";
+import SortTabs from "./components/SortTabs";
+import Ticket from "./components/Ticket";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <PageWrapper>
+                <Header/>
+                <div className="mainBlock">
+                    <Filter/>
+                    <div className="ticketsBlock">
+                        <SortTabs/>
+                        <div className="tickets">
+                            <Ticket/>
+                        </div>
+                    </div>
+                </div>
+            </PageWrapper>
+        </div>
+    );
 }
 
 export default App;
