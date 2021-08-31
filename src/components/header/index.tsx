@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
 import {getSearchToken} from "../../services/ticketsService";
-
+import {fetchTickets} from "../../redux/tickets/actionsCreators";
 
 const Header = () => {
+
     useEffect(() => {
-        getSearchToken().then((res) => console.log('res', res)).catch((e) => console.error(e))
+        fetchTickets()
     }, []);
 
     return (

@@ -1,9 +1,5 @@
-import {createStore, applyMiddleware, Store} from "redux"
-import thunk from "redux-thunk"
+import {applyMiddleware, createStore} from "redux";
+import thunk from "redux-thunk";
+import {ticketsReducer} from "./tickets/ticketsReducer";
 
-import reducer from './reducer'
-
-const store: Store<TicketState, TicketAction> & {
-    dispatch: DispatchType
-} = createStore(reducer, applyMiddleware(thunk))
-export default store;
+export const store = createStore(ticketsReducer, applyMiddleware(thunk))

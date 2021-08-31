@@ -22,9 +22,9 @@ axiosInstance.interceptors.request.use(
 );
 
 axiosInstance.interceptors.response.use(
-    (response) => response.data,
+    (response) => response,
     (error) => {
-        console.log("error", error);
+        console.log("Axios response error: ", error);
         return Promise.reject(error);
     }
 );
