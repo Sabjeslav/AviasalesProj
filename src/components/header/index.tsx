@@ -1,12 +1,15 @@
 import React, {useEffect} from 'react';
-import {getSearchToken} from "../../services/ticketsService";
-import {fetchTickets} from "../../redux/tickets/actionsCreators";
+import {getToken} from "../../redux/tickets/actionsCreators";
+import {useDispatch, useSelector} from "react-redux";
 
 const Header = () => {
 
+    const ticketState = useSelector(state => state)
+        const dispatch = useDispatch()
     useEffect(() => {
-        fetchTickets()
-    }, []);
+        dispatch(getToken())
+        console.log('ticketState', ticketState)
+    }, [dispatch]);
 
     return (
         <div>

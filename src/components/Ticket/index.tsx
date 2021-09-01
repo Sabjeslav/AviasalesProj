@@ -8,7 +8,6 @@ export interface TicketProps {
 
 const Ticket: React.FC<TicketProps> = ({ticket}: TicketProps) => {
     const imagePath = `https://pics.avs.io/99/36/${ticket.carrier}.png`
-    console.log('imagePath', imagePath)
     return (
         <div className={style.wrapper}>
             <div className={style.header}>

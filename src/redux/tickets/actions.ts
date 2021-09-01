@@ -14,4 +14,9 @@ interface IGetTicketsErrorAction {
     payload: string
 }
 
-export type TicketAction = IGetTicketsAction | IGetTicketsSuccessAction | IGetTicketsErrorAction
+interface IGetTicketsToken {
+    type: TicketsActionTypes.GET_TICKETS_TOKEN
+    payload: string
+}
+
+export type TicketAction = IGetTicketsAction | IGetTicketsSuccessAction | IGetTicketsErrorAction | IGetTicketsToken
