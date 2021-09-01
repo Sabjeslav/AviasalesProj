@@ -26,7 +26,7 @@ export const getToken = () => {
             dispatch({type: TicketsActionTypes.GET_TICKETS_SUCCESS, payload: response.data})
             console.log('response', response)
         } catch (e) {
-            dispatch({type: TicketsActionTypes.GET_TICKETS_ERROR, payload: 'oops!'})
+            dispatch({type: TicketsActionTypes.GET_TICKETS_ERROR, payload: 'Error while getting token!'})
         }
     }
 }
