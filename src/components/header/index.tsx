@@ -1,14 +1,12 @@
 import React, {useEffect} from 'react';
-import {getToken} from "../../redux/tickets/actionsCreators";
-import {useDispatch, useSelector} from "react-redux";
+import {fetchTickets, getToken} from "../../redux/tickets/actionsCreators";
+import {useDispatch} from "react-redux";
 
 const Header = () => {
-
-    const ticketState = useSelector(state => state)
-        const dispatch = useDispatch()
+    const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getToken())
-        console.log('ticketState', ticketState)
+        dispatch(fetchTickets())
     }, [dispatch]);
 
     return (

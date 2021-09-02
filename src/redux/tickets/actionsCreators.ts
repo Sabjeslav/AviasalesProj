@@ -1,20 +1,16 @@
 import {Dispatch} from "react";
 import {TicketsActionTypes} from "./actionTypes";
 import {TicketAction} from "./actions";
-import axiosInstance from "../../services/axiosInstance";
-import axios from "axios";
+import {getAllTickets, getSearchToken} from "../../services/ticketsService";
 
 export const fetchTickets = () => {
     return async (dispatch: Dispatch<TicketAction>) => {
         try {
             dispatch({type: TicketsActionTypes.GET_ALL_TICKETS})
-            const response = await axiosInstance.get('/tickets')
-            setTimeout(() => {
-                dispatch({type: TicketsActionTypes.GET_TICKETS_SUCCESS, payload: response.data})
-                console.log('response', response)
-            }, 500)
+            const response = await getAllTickets();
+            dispatch({type: TicketsActionTypes.GET_TICKETS_SUCCESS, payload: response.data?.tickets})
         } catch (e) {
-            dispatch({type: TicketsActionTypes.GET_TICKETS_ERROR, payload: 'oops!'})
+            dispatch({type: TicketsActionTypes.GET_TICKETS_ERROR, payload: 'Error while getting tickets'})
         }
     }
 }
@@ -22,8 +18,8 @@ export const fetchTickets = () => {
 export const getToken = () => {
     return async (dispatch: Dispatch<TicketAction>) => {
         try {
-            const response = await axios.get('https://front-test.beta.aviasales.ru/search')
-            dispatch({type: TicketsActionTypes.GET_TICKETS_SUCCESS, payload: response.data})
+            const response = await getSearchToken()
+            dispatch({type: TicketsActionTypes.GET_TICKETS_TOKEN, payload: response.data?.searchId})
             console.log('response', response)
         } catch (e) {
             dispatch({type: TicketsActionTypes.GET_TICKETS_ERROR, payload: 'Error while getting token!'})
@@ -31,4 +27,3 @@ export const getToken = () => {
     }
 }
 
-// dispatch: Dispatch<TicketAction>

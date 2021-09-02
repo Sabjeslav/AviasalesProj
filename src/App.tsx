@@ -6,32 +6,8 @@ import Filter from "./components/Filter";
 import SortTabs from "./components/SortTabs";
 import Ticket from "./components/Ticket";
 import {getSearchToken} from "./services/ticketsService";
+import TicketsWrapper from "./components/TicketsWrapper";
 
-const test = {
-    "price": 95932,
-    "carrier": "S7",
-    "segments": [
-        {
-            "origin": "MOW",
-            "destination": "HKT",
-            "date": "2021-09-09T17:26:00.000Z",
-            "stops": [
-                "SIN",
-                "BKK"
-            ],
-            "duration": 1511
-        },
-        {
-            "origin": "HKT",
-            "destination": "MOW",
-            "date": "2021-09-29T10:55:00.000Z",
-            "stops": [
-                "DXB"
-            ],
-            "duration": 1906
-        }
-    ]
-}
 
 
 function App() {
@@ -47,9 +23,7 @@ function App() {
                     <Filter/>
                     <div className="ticketsBlock">
                         <SortTabs/>
-                        <div className="tickets">
-                            <Ticket ticket={test}/>
-                        </div>
+                        <TicketsWrapper />
                     </div>
                 </div>
             </PageWrapper>

@@ -1,12 +1,7 @@
 import {TicketAction} from "./actions";
 import {TicketsActionTypes} from "./actionTypes";
 
-interface TicketsState {
-    tickets: any[];
-    loading: boolean;
-    error: null | string;
-    token: string
-}
+
 
 const initialState: TicketsState = {
     tickets: [],

@@ -30,4 +30,11 @@ type TicketAction = {
     tickets: ticket[]
 }
 
+interface TicketsState {
+    tickets: any[];
+    loading: boolean;
+    error: null | string;
+    token: string
+}
+
 type DispatchType = (args: TicketAction) => TicketAction
