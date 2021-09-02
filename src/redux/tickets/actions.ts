@@ -18,4 +18,13 @@ interface ISetTicketsLimit {
     type: TicketsActionTypes.SET_TICKETS_LIMIT,
 }
 
-export type TicketAction = IGetTicketsAction | IGetTicketsSuccessAction | IGetTicketsErrorAction | ISetTicketsLimit
+interface ISortTickets {
+    type: TicketsActionTypes.SORT_TICKETS_BY_PRICE | TicketsActionTypes.SORT_TICKETS_BY_DURATION
+}
+
+export type TicketAction =
+    IGetTicketsAction
+    | IGetTicketsSuccessAction
+    | IGetTicketsErrorAction
+    | ISetTicketsLimit
+    | ISortTickets

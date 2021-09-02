@@ -32,3 +32,15 @@ export const setTicketsLimit = () => {
     }
 }
 
+export const sortByLowestPrice = () => {
+    return (dispatch: Dispatch<TicketAction>) => {
+        dispatch({type: TicketsActionTypes.SORT_TICKETS_BY_PRICE})
+    }
+}
+
+export const sortByFlightDuration = () => {
+    return (dispatch: Dispatch<TicketAction>) => {
+        dispatch({type: TicketsActionTypes.SORT_TICKETS_BY_DURATION})
+    }
+}
+

@@ -8,6 +8,22 @@ const initialState: TicketsState = {
     limit: 5
 };
 
+const sortByPriceFunction = (a: ticket, b: ticket): number => {
+    return a.price - b.price;
+}
+
+const getFlightDuration = (ticket: ticket): number => {
+    let sum: number = 0;
+    ticket.segments.forEach((segment) => {
+        sum += segment.duration
+    })
+    return sum;
+}
+
+const sortByFlightDuration = (a: ticket, b: ticket): number => {
+    return getFlightDuration(a) - getFlightDuration(b)
+}
+
 export const ticketsReducer = (
     state = initialState,
     action: TicketAction
@@ -21,6 +37,10 @@ export const ticketsReducer = (
             return {...state, error: action.payload};
         case TicketsActionTypes.SET_TICKETS_LIMIT:
             return {...state, limit: state.limit + 5}
+        case TicketsActionTypes.SORT_TICKETS_BY_PRICE:
+            return {...state, tickets: state.tickets.sort(sortByPriceFunction)};
+        case TicketsActionTypes.SORT_TICKETS_BY_DURATION:
+            return {...state, tickets: state.tickets.sort(sortByFlightDuration)}
         default:
             return state;
     }

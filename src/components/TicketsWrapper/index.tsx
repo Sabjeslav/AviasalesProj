@@ -19,7 +19,8 @@ const TicketsWrapper = () => {
             {ticketsState.tickets.slice(0, ticketsState.limit).map((ticket: ticket, index: number) => {
                 return <Ticket key={index} ticket={ticket}/>
             })}
-            <button onClick={loadMoreTickets} className={style.loadMoreBtn}>Показать еще 5 билетов</button>
+            {ticketsState.limit >= ticketsState.tickets.length ? null :
+                <button onClick={loadMoreTickets} className={style.loadMoreBtn}>Показать еще 5 билетов</button>}
         </div>
     );
 };
