@@ -22,9 +22,15 @@ interface ISortTickets {
     type: TicketsActionTypes.SORT_TICKETS_BY_PRICE | TicketsActionTypes.SORT_TICKETS_BY_DURATION
 }
 
+interface IFilterTickets {
+    type: TicketsActionTypes.FILTER_TICKETS,
+    payload: number
+}
+
 export type TicketAction =
     IGetTicketsAction
     | IGetTicketsSuccessAction
     | IGetTicketsErrorAction
     | ISetTicketsLimit
     | ISortTickets
+    | IFilterTickets

@@ -20,21 +20,25 @@ interface ticket {
         }[],
 }
 
-type TicketState = {
-    tickets: ticket[]
-    isFetching: boolean
-}
-
 type TicketAction = {
     type: string
     tickets: ticket[]
 }
 
 interface TicketsState {
-    tickets: any[];
+    tickets: ticket[];
+    filteredTickets: ticket[];
     loading: boolean;
     error: null | string;
-    limit: number
+    limit: number,
+    filters: filter
+}
+
+interface filter {
+    all: boolean,
+    one: boolean,
+    two: boolean,
+    three: boolean
 }
 
 type DispatchType = (args: TicketAction) => TicketAction
