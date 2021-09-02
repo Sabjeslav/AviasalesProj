@@ -34,7 +34,7 @@ interface TicketsState {
     tickets: any[];
     loading: boolean;
     error: null | string;
-    token: string
+    limit: number
 }
 
 type DispatchType = (args: TicketAction) => TicketAction

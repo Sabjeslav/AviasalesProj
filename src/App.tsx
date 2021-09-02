@@ -1,20 +1,13 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import PageWrapper from "./components/PageWrapper";
 import Header from "./components/header";
 import Filter from "./components/Filter";
 import SortTabs from "./components/SortTabs";
-import Ticket from "./components/Ticket";
-import {getSearchToken} from "./services/ticketsService";
 import TicketsWrapper from "./components/TicketsWrapper";
 
 
-
 function App() {
-    useEffect(() => {
-        getSearchToken()
-    }, []);
-
     return (
         <div className="App">
             <PageWrapper>
@@ -23,7 +16,7 @@ function App() {
                     <Filter/>
                     <div className="ticketsBlock">
                         <SortTabs/>
-                        <TicketsWrapper />
+                        <TicketsWrapper/>
                     </div>
                 </div>
             </PageWrapper>

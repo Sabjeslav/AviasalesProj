@@ -14,9 +14,8 @@ interface IGetTicketsErrorAction {
     payload: string
 }
 
-interface IGetTicketsToken {
-    type: TicketsActionTypes.GET_TICKETS_TOKEN
-    payload: string
+interface ISetTicketsLimit {
+    type: TicketsActionTypes.SET_TICKETS_LIMIT,
 }
 
-export type TicketAction = IGetTicketsAction | IGetTicketsSuccessAction | IGetTicketsErrorAction | IGetTicketsToken
+export type TicketAction = IGetTicketsAction | IGetTicketsSuccessAction | IGetTicketsErrorAction | ISetTicketsLimit

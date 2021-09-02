@@ -1,13 +1,11 @@
 import {TicketAction} from "./actions";
 import {TicketsActionTypes} from "./actionTypes";
 
-
-
 const initialState: TicketsState = {
     tickets: [],
     loading: false,
     error: null,
-    token: ""
+    limit: 5
 };
 
 export const ticketsReducer = (
@@ -21,8 +19,8 @@ export const ticketsReducer = (
             return {...state, tickets: action.payload, loading: false};
         case TicketsActionTypes.GET_TICKETS_ERROR:
             return {...state, error: action.payload};
-        case TicketsActionTypes.GET_TICKETS_TOKEN:
-            return {...state, token: action.payload}
+        case TicketsActionTypes.SET_TICKETS_LIMIT:
+            return {...state, limit: state.limit + 5}
         default:
             return state;
     }

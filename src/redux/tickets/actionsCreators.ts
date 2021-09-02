@@ -19,11 +19,16 @@ export const getToken = () => {
     return async (dispatch: Dispatch<TicketAction>) => {
         try {
             const response = await getSearchToken()
-            dispatch({type: TicketsActionTypes.GET_TICKETS_TOKEN, payload: response.data?.searchId})
-            console.log('response', response)
+            localStorage.token = response.data?.searchId;
         } catch (e) {
             dispatch({type: TicketsActionTypes.GET_TICKETS_ERROR, payload: 'Error while getting token!'})
         }
+    }
+}
+
+export const setTicketsLimit = () => {
+    return (dispatch: Dispatch<TicketAction>) => {
+        dispatch({type: TicketsActionTypes.SET_TICKETS_LIMIT})
     }
 }
 
