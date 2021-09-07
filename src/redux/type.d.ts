@@ -31,14 +31,10 @@ interface TicketsState {
     loading: boolean;
     error: null | string;
     limit: number,
-    filters: filter
 }
 
-interface filter {
-    all: boolean,
-    one: boolean,
-    two: boolean,
-    three: boolean
+interface filterItem {
+    value: number
 }
 
 type DispatchType = (args: TicketAction) => TicketAction

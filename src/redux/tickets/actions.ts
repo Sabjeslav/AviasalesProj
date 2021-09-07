@@ -24,7 +24,9 @@ interface ISortTickets {
 
 interface IFilterTickets {
     type: TicketsActionTypes.FILTER_TICKETS,
-    payload: number
+    payload: {
+        filters: filterItem[]
+    }
 }
 
 export type TicketAction =

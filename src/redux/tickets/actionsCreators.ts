@@ -44,3 +44,12 @@ export const sortByFlightDuration = () => {
     }
 }
 
+export const applyFilters = (filters: filterItem[]) => {
+    return (dispatch: Dispatch<TicketAction>) => {
+        dispatch({
+            type: TicketsActionTypes.FILTER_TICKETS, payload: {
+                filters: filters
+            }
+        })
+    }
+}

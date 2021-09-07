@@ -7,12 +7,6 @@ const initialState: TicketsState = {
     loading: false,
     error: null,
     limit: 5,
-    filters: {
-        all: true,
-        one: false,
-        two: false,
-        three: false
-    }
 };
 
 const sortByPrice = (a: ticket, b: ticket): number => {
@@ -31,17 +25,10 @@ const sortByFlightDuration = (a: ticket, b: ticket): number => {
     return getFlightDuration(a) - getFlightDuration(b)
 }
 
-const changeFilter = (state: TicketsState = initialState, type: number) => {
-    switch (type) {
-        case 1:
-            return {...state, filters: {...state.filters, one: !state.filters.one, all: false}}
-        case 2:
-            return {...state, filters: {...state.filters, two: !state.filters.two, all: false}}
-        case 3:
-            return {...state, filters: {...state.filters, two: !state.filters.three, all: false}}
-        default:
-            break;
-    }
+const filterArray = (array: ticket[], filters: filterItem[]): ticket[] => {
+    return array.filter((ticket: ticket) => filters.every((filter: filterItem) => {
+        return ticket.segments.every(segment => segment.stops.length === filter.value)
+    }))
 }
 
 export const ticketsReducer = (
@@ -52,7 +39,7 @@ export const ticketsReducer = (
         case TicketsActionTypes.GET_ALL_TICKETS:
             return {...state, loading: true};
         case TicketsActionTypes.GET_TICKETS_SUCCESS:
-            return {...state, tickets: action.payload, loading: false};
+            return {...state, tickets: action.payload, filteredTickets: action.payload, loading: false};
         case TicketsActionTypes.GET_TICKETS_ERROR:
             return {...state, error: action.payload};
         case TicketsActionTypes.SET_TICKETS_LIMIT:
@@ -62,8 +49,12 @@ export const ticketsReducer = (
         case TicketsActionTypes.SORT_TICKETS_BY_DURATION:
             return {...state, tickets: state.tickets.sort(sortByFlightDuration)};
         case TicketsActionTypes.FILTER_TICKETS:
-            const type: number = action.payload;
-            return state;
+            const {filters} = action.payload;
+            console.log('filters', filters)
+            console.log('state.tickets', state.tickets)
+            const filteredTicketsArray: ticket[] = filterArray(state.tickets, filters);
+            console.log('filteredTicketsArray', filteredTicketsArray)
+            return {...state, filteredTickets: filteredTicketsArray};
         default:
             return state;
     }

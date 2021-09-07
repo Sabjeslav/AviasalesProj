@@ -16,10 +16,10 @@ const TicketsWrapper = () => {
     }
     return (
         <div className={style.tickets}>
-            {ticketsState.tickets.slice(0, ticketsState.limit).map((ticket: ticket, index: number) => {
+            {ticketsState.filteredTickets.slice(0, ticketsState.limit).map((ticket: ticket, index: number) => {
                 return <Ticket key={index} ticket={ticket}/>
             })}
-            {ticketsState.limit >= ticketsState.tickets.length ? null :
+            {ticketsState.limit >= ticketsState.filteredTickets.length ? null :
                 <button onClick={loadMoreTickets} className={style.loadMoreBtn}>Показать еще 5 билетов</button>}
         </div>
     );
